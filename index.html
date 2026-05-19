@@ -160,8 +160,8 @@
     .nav-logo {
       display: flex; align-items: center; gap: 0; flex-shrink: 0; z-index: 2;
     }
-    .nav-logo .logo-dark { display: block; height: 44px; width: auto; }
-    .nav-logo .logo-light { display: none; height: 36px; width: auto; }
+    .nav-logo .logo-dark { display: block; height: 88px; width: auto; }
+    .nav-logo .logo-light { display: none; height: 72px; width: auto; }
     #nav.solid .nav-logo .logo-dark  { display: none; }
     #nav.solid .nav-logo .logo-light { display: block; }
 
@@ -548,6 +548,16 @@
     #pillars {
       background: var(--night); padding: 140px 0; position: relative; overflow: hidden;
     }
+    #pillars::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('mood-journal.webp') center/cover no-repeat;
+      z-index: 0;
+    }
+    #pillars::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(26,44,30,0.82);
+      z-index: 0;
+    }
     .pill-o1 {
       width: 640px; height: 640px; top: 50%; left: 50%;
       transform: translate(-50%,-50%);
@@ -730,6 +740,16 @@
     #showcase {
       background: var(--forest); padding: 150px 0; position: relative; overflow: hidden;
     }
+    #showcase::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('mood-healing.jpg') center/cover no-repeat;
+      z-index: 0;
+    }
+    #showcase::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(31,77,50,0.84);
+      z-index: 0;
+    }
     .shw-o1 {
       width: 900px; height: 900px; top: 50%; left: 50%;
       transform: translate(-50%,-50%);
@@ -824,6 +844,16 @@
     ============================================================ */
     #contact {
       background: var(--night); padding: 130px 0; position: relative; overflow: hidden;
+    }
+    #contact::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('mood-growth.webp') center/cover no-repeat;
+      z-index: 0;
+    }
+    #contact::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(26,44,30,0.82);
+      z-index: 0;
     }
     .con-o {
       width: 540px; height: 540px; bottom: -20%; right: -5%;
@@ -963,6 +993,11 @@
       .foot-inner{ flex-direction: column; text-align: center; gap: 14px; }
       .int-h2    { font-size: clamp(28px,8vw,44px); }
       .hero-h1   { font-size: clamp(62px,18vw,120px); }
+      .nav-logo .logo-dark  { height: 60px; }
+      .nav-logo .logo-light { height: 48px; }
+      .con-layout { grid-template-columns: 1fr; gap: 48px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-visual { display: none; }
     }
 
     /* ============================================================
@@ -1005,9 +1040,9 @@
 
       <a href="#" class="nav-logo" aria-label="Healing Soul home">
         <!-- light logo (cream/gold) for transparent nav over dark hero -->
-        <img class="logo-dark" src="logo-combined-dark-1.jpg" alt="Healing Soul">
+        <img class="logo-dark" src="logo-real-light.png" alt="Healing Soul">
         <!-- dark logo (green) for scrolled cream nav -->
-        <img class="logo-light" src="logo-horizontal-light-1.jpg" alt="Healing Soul">
+        <img class="logo-light" src="logo-real.png" alt="Healing Soul">
       </a>
 
       <ul class="nav-links" role="list">
@@ -1081,7 +1116,7 @@
         <!-- Floating phone mockup - parallax on scroll -->
         <div class="hero-visual" aria-hidden="true">
           <div class="phone-wrap" id="hero-phone">
-            <img src="photo2.jpg" alt="Healing Soul app - journal home screen" loading="lazy">
+            <img src="photo2.jpg" alt="Healing Soul app welcome screen with mood check-in" loading="lazy">
           </div>
         </div>
 
@@ -1303,13 +1338,13 @@
 
       <div class="phone-row rev">
         <div class="phone phone-side">
-          <img src="photo3.jpg" alt="Healing Soul releases and tools" loading="lazy">
+          <img src="photo3.jpg" alt="Healing Soul releases library" loading="lazy">
         </div>
         <div class="phone phone-main">
-          <img src="photo2.jpg" alt="Healing Soul journal home" loading="lazy">
+          <img src="photo1.jpg" alt="Healing Soul journal home with moon calendar" loading="lazy">
         </div>
         <div class="phone phone-side">
-          <img src="photo1.jpg" alt="Healing Soul Luma AI companion" loading="lazy">
+          <img src="photo4.jpg" alt="Healing Soul mood check-in" loading="lazy">
         </div>
       </div>
 
@@ -1424,7 +1459,7 @@
     <div class="wrap">
       <div class="foot-inner">
         <div class="foot-logo">
-          <img src="logo-icon-light-1.jpg" alt="Healing Soul icon">
+          <img src="logo-real-light.png" alt="Healing Soul icon">
           <span class="foot-name">Healing Soul</span>
         </div>
         <span class="foot-tag">Heal Deep. Live Whole.</span>
