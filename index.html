@@ -974,30 +974,93 @@
        RESPONSIVE - Mobile
     ============================================================ */
     @media (max-width: 768px) {
-      .wrap      { padding: 0 22px; }
-      .nav-wrap  { padding: 0 22px; }
+      /* Reset cursor for touch */
+      body, a, .btn { cursor: auto; }
+      #cur-dot, #cur-ring { display: none; }
+
+      /* Layout */
+      .wrap      { padding: 0 20px; }
+      .nav-wrap  { padding: 0 20px; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      #hero      { padding: 120px 0 80px; }
+
+      /* Hero */
+      #hero      { padding: 110px 0 60px; min-height: auto; }
       .hero-ghost{ display: none; }
-      .hero-ctas { justify-content: center; }
-      .scroll-ind{ display: none; }
-      #interlude, #pillars, #features, #how, #showcase, #cta, #contact { padding: 88px 0; }
-      .feat-grid { grid-template-columns: 1fr; }
-      .steps     { grid-template-columns: 1fr; gap: 48px; }
-      .phone-row { flex-direction: column; align-items: center; }
-      .phone-main{ width: 260px; transform: none; }
-      .phone-side{ width: 240px; opacity: 1; }
-      .stats-row { grid-template-columns: 1fr; }
-      .cta-btns  { flex-direction: column; align-items: center; }
-      .foot-inner{ flex-direction: column; text-align: center; gap: 14px; }
-      .int-h2    { font-size: clamp(28px,8vw,44px); }
-      .hero-h1   { font-size: clamp(62px,18vw,120px); }
-      .nav-logo .logo-dark  { height: 60px; }
-      .nav-logo .logo-light { height: 48px; }
-      .con-layout { grid-template-columns: 1fr; gap: 48px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
       .hero-visual { display: none; }
+      .hero-ctas { justify-content: center; flex-direction: column; align-items: center; gap: 12px; }
+      .hero-h1   { font-size: clamp(48px,14vw,90px); }
+      .hero-eyebrow { font-size: 10px; }
+      .hero-tagline { font-size: 16px; }
+      .scroll-ind{ display: none; }
+
+      /* Sections */
+      #interlude, #pillars, #features, #how, #showcase, #cta, #contact { padding: 64px 0; }
+      .int-h2    { font-size: clamp(26px,7vw,40px); }
+
+      /* Nav logo */
+      .nav-logo .logo-dark  { height: 52px; }
+      .nav-logo .logo-light { height: 44px; }
+      #nav { padding: 16px 0; }
+      #nav.solid { padding: 12px 0; }
+
+      /* Pillars */
+      .pill-grid   { grid-template-columns: 1fr; gap: 20px; }
+      .pill-ghost  { display: none; }
+      .pill-h2     { font-size: clamp(26px,7vw,42px); }
+      .pill-card   { padding: 36px 28px; }
+
+      /* Features */
+      .feat-grid { grid-template-columns: 1fr; }
+      .feat-layout { grid-template-columns: 1fr; }
+      .feat-h2   { font-size: clamp(26px,7vw,42px); }
+
+      /* How it works */
+      .steps     { grid-template-columns: 1fr; gap: 36px; }
+      .steps-wrap::before { display: none; }
+      .how-ghost { display: none; }
+      .how-h2    { font-size: clamp(26px,7vw,42px); }
+      .step-num  { width: 72px; height: 72px; font-size: 28px; }
+
+      /* App showcase */
+      .phone-row { flex-direction: column; align-items: center; gap: 20px; }
+      .phone-main{ width: 75vw; max-width: 280px; transform: none; }
+      .phone-side{ width: 65vw; max-width: 240px; opacity: 1; }
+      .shw-h2    { font-size: clamp(26px,7vw,42px); }
+
+      /* Stats */
+      .stats-row { grid-template-columns: 1fr; gap: 20px; }
+      .stat-n    { font-size: 48px; }
+
+      /* CTA */
+      .cta-h2    { font-size: clamp(28px,7vw,48px); }
+      .cta-btns  { flex-direction: column; align-items: center; }
+
+      /* Contact */
+      .con-layout { grid-template-columns: 1fr; gap: 40px; }
+      .con-h2    { font-size: clamp(24px,6vw,36px); }
+
+      /* Footer */
+      .foot-inner{ flex-direction: column; text-align: center; gap: 14px; }
+
+      /* Buttons - bigger touch targets */
+      .btn { padding: 16px 36px; font-size: 14px; min-height: 48px; }
+      .nav-cta { padding: 12px 24px; }
+
+      /* Aside cards */
+      .aside-card { padding: 24px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .wrap      { padding: 0 16px; }
+      .nav-wrap  { padding: 0 16px; }
+      .hero-h1   { font-size: clamp(40px,12vw,72px); }
+      .nav-logo .logo-dark  { height: 44px; }
+      .nav-logo .logo-light { height: 36px; }
+      .phone-main{ width: 85vw; }
+      .phone-side{ width: 75vw; }
+      .btn { padding: 18px 32px; width: 100%; justify-content: center; }
     }
 
     /* ============================================================
