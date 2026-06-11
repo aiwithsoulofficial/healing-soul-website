@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service - Healing Soul</title>
+  <meta name="description" content="Terms of Service for the Healing Soul mobile application. Effective 1 July 2026.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       RESET + ROOT TOKENS
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest:      #1F4D32;
+      --forest-alt:  #297d4e;
+      --sea:         #2e8b57;
+      --sage:        #5C8A68;
+      --highlight:   #8FD4A4;
+      --mist:        #C8E6C9;
+      --terracotta:  #C4855A;
+      --earth:       #8C6347;
+      --cream:       #F5F0E8;
+      --cream-alt:   #EDE4D3;
+      --night:       #1A2C1E;
+      --night-deep:  #0f1a11;
+      --f-display:   'Cormorant Garamond', Georgia, serif;
+      --f-body:      'DM Sans', system-ui, sans-serif;
+      --radius-sm:   6px;
+      --radius-md:   12px;
+      --radius-lg:   20px;
+      --radius-full: 9999px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--f-body);
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--night);
+      background: var(--cream);
+      cursor: none;
+      overflow-x: hidden;
+    }
+
+    img  { max-width: 100%; display: block; }
+    a    { color: inherit; text-decoration: none; }
+
+    /* ============================================================
+       FILM GRAIN OVERLAY
+    ============================================================ */
+    #grain {
+      position: fixed; inset: -50%;
+      width: 200%; height: 200%;
+      pointer-events: none; z-index: 9997;
+      opacity: 0.032;
+      animation: grain 0.35s steps(1) infinite;
+    }
+    @keyframes grain {
+      0%   { background-position:   0%   0%; }
+      10%  { background-position:  -5% -10%; }
+      20%  { background-position: -15%   5%; }
+      30%  { background-position:   7% -25%; }
+      40%  { background-position:  -5%  25%; }
+      50%  { background-position: -15%  10%; }
+      60%  { background-position:  15%   0%; }
+      70%  { background-position:   0%  15%; }
+      80%  { background-position:   3%  35%; }
+      90%  { background-position: -10%  10%; }
+      100% { background-position:   0%   0%; }
+    }
+
+    /* ============================================================
+       CUSTOM CURSOR
+    ============================================================ */
+    #cur-dot {
+      position: fixed; width: 8px; height: 8px;
+      border-radius: 50%; background: var(--forest);
+      pointer-events: none; z-index: 99999;
+      transform: translate(-50%,-50%);
+      transition: opacity .2s;
+    }
+    #cur-ring {
+      position: fixed; width: 34px; height: 34px;
+      border-radius: 50%; border: 1.5px solid rgba(31,77,50,.45);
+      pointer-events: none; z-index: 99998;
+      transform: translate(-50%,-50%);
+      transition: width .2s, height .2s, border-color .2s;
+    }
+    body.cur-hover #cur-ring {
+      width: 54px; height: 54px; border-color: var(--terracotta);
+    }
+    @media (hover: none) {
+      #cur-dot, #cur-ring { display: none; }
+      body { cursor: auto; }
+    }
+
+    /* ============================================================
+       NAV
+    ============================================================ */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 8000;
+      padding: 22px 0;
+      background: rgba(245,240,232,.96);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      box-shadow: 0 2px 28px rgba(26,44,30,.07);
+    }
+
+    .nav-wrap {
+      max-width: 1440px; margin: 0 auto; padding: 0 52px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 0; flex-shrink: 0;
+    }
+    .nav-logo img { height: 72px; width: auto; }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 36px; list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px; font-weight: 500; letter-spacing: .13em; text-transform: uppercase;
+      color: rgba(26,44,30,.65); transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--forest); }
+
+    .nav-cta {
+      font-size: 12px !important; font-weight: 500 !important;
+      letter-spacing: .1em !important; text-transform: uppercase !important;
+      color: var(--cream) !important; background: var(--terracotta);
+      padding: 10px 26px; border-radius: var(--radius-full);
+      transition: background .2s, transform .2s !important;
+    }
+    .nav-cta:hover {
+      background: var(--earth) !important; color: var(--cream) !important;
+      transform: translateY(-1px);
+    }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 6px; z-index: 8002;
+    }
+    .hamburger span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--night); transition: transform .3s, opacity .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mob-menu {
+      display: none; position: fixed; inset: 0;
+      background: var(--night); z-index: 8001;
+      flex-direction: column; align-items: center; justify-content: center; gap: 40px;
+      opacity: 0; transition: opacity .3s;
+    }
+    .mob-menu.open { opacity: 1; }
+    .mob-menu a {
+      font-family: var(--f-display); font-size: clamp(28px,7vw,52px);
+      font-weight: 400; color: var(--cream); letter-spacing: .04em;
+      transition: color .2s;
+    }
+    .mob-menu a:hover { color: var(--highlight); }
+    .mob-menu .mob-cta {
+      font-family: var(--f-body); font-size: 14px; letter-spacing: .1em;
+      text-transform: uppercase; background: var(--terracotta);
+      color: var(--cream); padding: 16px 48px; border-radius: var(--radius-full);
+    }
+
+    /* ============================================================
+       CONTAINERS
+    ============================================================ */
+    .wrap {
+      max-width: 1440px; margin: 0 auto; padding: 0 52px;
+    }
+
+    .divider {
+      display: flex; align-items: center; justify-content: center; gap: 18px;
+      padding: 8px 0;
+    }
+    .divider::before, .divider::after {
+      content: ''; width: 72px; height: 1px;
+      background: currentColor; opacity: .25;
+    }
+    .divider-gem {
+      width: 6px; height: 6px; background: var(--terracotta);
+      transform: rotate(45deg); flex-shrink: 0;
+    }
+
+    /* ============================================================
+       PAGE HERO (dark header strip)
+    ============================================================ */
+    #page-hero {
+      background: var(--night); padding: 160px 0 90px;
+      position: relative; overflow: hidden;
+    }
+    #page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('mood-journal.webp') center/cover no-repeat;
+      z-index: 0; opacity: .35;
+    }
+    #page-hero::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(15,26,17,.9) 0%, rgba(31,77,50,.8) 100%);
+      z-index: 0;
+    }
+    .page-hero-ghost {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--f-display); font-size: 22vw; font-weight: 300;
+      color: rgba(143,212,164,.022); white-space: nowrap;
+      pointer-events: none; letter-spacing: -.02em;
+      z-index: 0; line-height: 1; user-select: none;
+    }
+    .page-hero-inner {
+      position: relative; z-index: 2; text-align: center;
+    }
+    .page-eyebrow {
+      display: block; font-size: 10px; font-weight: 500;
+      letter-spacing: .3em; text-transform: uppercase; color: var(--terracotta);
+      margin-bottom: 20px;
+    }
+    .page-h1 {
+      font-family: var(--f-display); font-size: clamp(40px, 6vw, 88px);
+      font-weight: 300; line-height: 1.05; color: var(--cream);
+      margin-bottom: 24px;
+    }
+    .page-meta {
+      display: flex; align-items: center; justify-content: center;
+      gap: 32px; flex-wrap: wrap;
+      font-size: 12px; letter-spacing: .15em; text-transform: uppercase;
+      color: rgba(200,230,201,.45);
+    }
+    .page-meta span { display: flex; align-items: center; gap: 8px; }
+    .page-meta-dot {
+      width: 4px; height: 4px; background: var(--terracotta);
+      border-radius: 50%; flex-shrink: 0;
+    }
+
+    /* ============================================================
+       DOCUMENT BODY
+    ============================================================ */
+    #doc {
+      background: var(--cream); padding: 100px 0 120px;
+      position: relative;
+    }
+
+    .doc-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* Table of Contents (sidebar) */
+    .toc {
+      position: sticky; top: 110px;
+    }
+    .toc-label {
+      font-size: 9px; letter-spacing: .3em; text-transform: uppercase;
+      color: var(--terracotta); margin-bottom: 20px; display: block;
+    }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .toc-list a {
+      font-size: 12px; font-weight: 400; color: var(--sage);
+      line-height: 1.5; transition: color .2s; display: block;
+      padding: 3px 0 3px 12px;
+      border-left: 2px solid transparent;
+    }
+    .toc-list a:hover {
+      color: var(--forest);
+      border-left-color: var(--terracotta);
+    }
+    .toc-divider {
+      width: 100%; height: 1px; background: rgba(92,138,104,.15);
+      margin: 16px 0;
+    }
+    .toc-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--sage); transition: color .2s; margin-top: 24px;
+    }
+    .toc-back:hover { color: var(--forest); }
+    .toc-back svg { width: 14px; height: 14px; stroke: currentColor; }
+
+    /* Document content */
+    .doc-content { max-width: 720px; }
+
+    .tos-intro {
+      font-size: 16px; line-height: 1.85; color: var(--sage);
+      margin-bottom: 56px; padding-bottom: 40px;
+      border-bottom: 1px solid rgba(92,138,104,.15);
+    }
+    .tos-intro strong {
+      color: var(--night); font-weight: 500;
+    }
+
+    .tos-section {
+      margin-bottom: 52px; padding-bottom: 52px;
+      border-bottom: 1px solid rgba(92,138,104,.1);
+      scroll-margin-top: 120px;
+    }
+    .tos-section:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .tos-section-num {
+      display: block; font-size: 10px; font-weight: 500;
+      letter-spacing: .28em; text-transform: uppercase; color: var(--terracotta);
+      margin-bottom: 10px;
+    }
+    .tos-h2 {
+      font-family: var(--f-display); font-size: clamp(22px, 2.5vw, 34px);
+      font-weight: 400; color: var(--night); line-height: 1.2;
+      margin-bottom: 22px;
+    }
+    .tos-h3 {
+      font-family: var(--f-display); font-size: 20px; font-weight: 500;
+      color: var(--night); margin: 28px 0 12px; line-height: 1.25;
+    }
+    .tos-p {
+      font-size: 15px; line-height: 1.85; color: var(--sage);
+      margin-bottom: 16px;
+    }
+    .tos-p:last-child { margin-bottom: 0; }
+    .tos-p strong { color: var(--night); font-weight: 500; }
+
+    .tos-ul {
+      list-style: none; margin: 16px 0 20px; padding: 0;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .tos-ul li {
+      font-size: 15px; line-height: 1.75; color: var(--sage);
+      padding-left: 20px; position: relative;
+    }
+    .tos-ul li::before {
+      content: '';
+      position: absolute; left: 0; top: 11px;
+      width: 5px; height: 5px; background: var(--terracotta);
+      border-radius: 50%;
+    }
+
+    .tos-callout {
+      background: rgba(31,77,50,.05);
+      border: 1px solid rgba(31,77,50,.12);
+      border-left: 3px solid var(--forest);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 28px 28px 28px 24px;
+      margin: 24px 0;
+    }
+    .tos-callout p {
+      font-size: 15px; line-height: 1.8; color: var(--sage); margin-bottom: 12px;
+    }
+    .tos-callout p:last-child { margin-bottom: 0; }
+    .tos-callout strong { color: var(--night); font-weight: 500; }
+
+    .tos-callout-danger {
+      background: rgba(196,133,90,.06);
+      border-color: rgba(196,133,90,.2);
+      border-left-color: var(--terracotta);
+    }
+
+    .tos-inline-list {
+      display: flex; gap: 12px; flex-wrap: wrap; margin: 12px 0;
+    }
+    .tos-inline-list code {
+      font-family: var(--f-body); font-size: 13px; font-weight: 500;
+      background: rgba(31,77,50,.07); color: var(--forest);
+      padding: 4px 12px; border-radius: var(--radius-full);
+    }
+
+    .tos-contact-box {
+      background: rgba(31,77,50,.05);
+      border: 1px solid rgba(92,138,104,.15);
+      border-radius: var(--radius-md);
+      padding: 32px 36px; margin-top: 24px;
+    }
+    .tos-contact-box p {
+      font-size: 15px; line-height: 1.8; color: var(--sage); margin-bottom: 8px;
+    }
+    .tos-contact-box p:last-child { margin-bottom: 0; }
+    .tos-contact-box strong { color: var(--night); font-weight: 500; }
+    .tos-contact-box a { color: var(--forest); text-decoration: underline; text-underline-offset: 3px; }
+    .tos-contact-box a:hover { color: var(--terracotta); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer {
+      background: var(--night-deep); padding: 56px 0;
+    }
+    .foot-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .foot-logo { display: flex; align-items: center; gap: 10px; }
+    .foot-logo img { height: 30px; width: auto; opacity: .7; }
+    .foot-name {
+      font-family: var(--f-display); font-size: 17px; font-weight: 400;
+      color: var(--cream); opacity: .65;
+    }
+    .foot-tag {
+      font-family: var(--f-display); font-size: 15px; font-style: italic;
+      color: rgba(200,230,201,.35);
+    }
+    .foot-copy {
+      font-size: 11px; letter-spacing: .08em; color: rgba(200,230,201,.28);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1080px) {
+      .doc-layout { grid-template-columns: 1fr; gap: 0; }
+      .toc { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      body, a { cursor: auto; }
+      #cur-dot, #cur-ring { display: none; }
+      .wrap     { padding: 0 20px; }
+      .nav-wrap { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .nav-logo img { height: 44px; }
+      #nav { padding: 16px 0; }
+      #page-hero { padding: 120px 0 64px; }
+      .page-h1 { font-size: clamp(32px, 10vw, 56px); }
+      .page-hero-ghost { display: none; }
+      #doc { padding: 64px 0 80px; }
+      .tos-callout { padding: 20px 18px 20px 16px; }
+      .tos-contact-box { padding: 24px 20px; }
+      .foot-inner { flex-direction: column; text-align: center; gap: 14px; }
+    }
+
+    @media (max-width: 480px) {
+      .wrap     { padding: 0 16px; }
+      .nav-wrap { padding: 0 16px; }
+      .page-meta { gap: 18px; font-size: 10px; }
+    }
+
+    @media print {
+      #grain, #cur-dot, #cur-ring, #nav, .toc { display: none !important; }
+      #doc { padding: 24px 0; }
+      #page-hero { padding: 40px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FILM GRAIN SVG -->
+  <svg id="grain" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <filter id="fn">
+      <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#fn)"/>
+  </svg>
+
+  <!-- CUSTOM CURSOR -->
+  <div id="cur-dot" aria-hidden="true"></div>
+  <div id="cur-ring" aria-hidden="true"></div>
+
+  <!-- ====================================================
+       NAVIGATION
+  ==================================================== -->
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-wrap">
+
+      <a href="index.html" class="nav-logo" aria-label="Healing Soul home">
+        <img src="logo-real.png" alt="Healing Soul">
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="index.html#pillars">The App</a></li>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#how">How It Works</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Get Early Access</a></li>
+      </ul>
+
+      <div class="hamburger" id="ham" role="button" tabindex="0" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- MOBILE OVERLAY MENU -->
+  <div class="mob-menu" id="mob" role="dialog" aria-modal="true" aria-label="Navigation">
+    <a href="index.html#pillars" class="mob-lnk">The App</a>
+    <a href="index.html#features" class="mob-lnk">Features</a>
+    <a href="index.html#how" class="mob-lnk">How It Works</a>
+    <a href="index.html#contact" class="mob-cta">Get Early Access</a>
+  </div>
+
+  <!-- ====================================================
+       PAGE HERO
+  ==================================================== -->
+  <section id="page-hero" aria-label="Terms of Service">
+    <div class="page-hero-ghost" aria-hidden="true">Terms</div>
+    <div class="wrap">
+      <div class="page-hero-inner">
+        <div class="divider" style="margin-bottom:28px; color: rgba(245,240,232,.25);" aria-hidden="true">
+          <div class="divider-gem"></div>
+        </div>
+        <span class="page-eyebrow">Legal</span>
+        <h1 class="page-h1">Terms of Service</h1>
+        <div class="page-meta" role="list">
+          <span role="listitem"><span class="page-meta-dot"></span>Effective 1 July 2026</span>
+          <span role="listitem"><span class="page-meta-dot"></span>Last updated 2 June 2026</span>
+          <span role="listitem"><span class="page-meta-dot"></span>Version 1.0</span>
+        </div>
+        <div class="divider" style="margin-top:36px; color: rgba(245,240,232,.2);" aria-hidden="true">
+          <div class="divider-gem"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       DOCUMENT
+  ==================================================== -->
+  <main id="doc" aria-label="Terms of Service document">
+    <div class="wrap">
+      <div class="doc-layout">
+
+        <!-- Sidebar TOC -->
+        <nav class="toc" aria-label="Document contents">
+          <span class="toc-label">Contents</span>
+          <ul class="toc-list">
+            <li><a href="#s1">1. About Healing Soul</a></li>
+            <li><a href="#s2">2. Eligibility</a></li>
+            <li><a href="#s3">3. Your Account</a></li>
+            <li><a href="#s4">4. Free &amp; Premium Content</a></li>
+            <li><a href="#s5">5. Billing &amp; Payment</a></li>
+            <li><a href="#s6">6. Your Content</a></li>
+            <li><a href="#s7">7. Acceptable Use</a></li>
+            <li><a href="#s8">8. Intellectual Property</a></li>
+            <li><a href="#s9">9. App Store Subscriptions</a></li>
+            <li><a href="#s10">10. Third-Party Services</a></li>
+            <li><a href="#s11">11. Service Availability</a></li>
+            <li><a href="#s12">12. Wellness Disclaimer</a></li>
+            <li><a href="#s13">13. Limitation of Liability</a></li>
+            <li><a href="#s14">14. Indemnity</a></li>
+            <li><a href="#s15">15. Termination</a></li>
+            <li><a href="#s16">16. Governing Law</a></li>
+            <li><a href="#s17">17. Changes to These Terms</a></li>
+            <li><a href="#s18">18. General</a></li>
+            <li><a href="#s19">19. Contact Us</a></li>
+          </ul>
+          <div class="toc-divider"></div>
+          <a href="index.html" class="toc-back">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            Back to site
+          </a>
+        </nav>
+
+        <!-- Main content -->
+        <article class="doc-content">
+
+          <div class="tos-intro">
+            These Terms of Service ("Terms") form a legally binding agreement between you and <strong>Healing Soul Pty Ltd (ABN 79&nbsp;511&nbsp;598&nbsp;831)</strong> ("we", "us", "our") governing your use of the Healing Soul mobile application ("App").
+            <br><br>
+            Please read these Terms carefully before creating an account. By creating an account or using the App, you agree to be bound by these Terms and our Privacy Policy.
+          </div>
+
+          <!-- 1 -->
+          <section class="tos-section" id="s1" aria-labelledby="s1-heading">
+            <span class="tos-section-num">Section 01</span>
+            <h2 class="tos-h2" id="s1-heading">About Healing Soul</h2>
+            <p class="tos-p">Healing Soul is a spiritual wellness application that provides mood tracking, guided journalling, a curated library of self-healing practices ("Releases"), and a lunar calendar tied to reflection and intention rituals. The App is designed as a self-guided complement to your personal wellbeing practice.</p>
+            <div class="tos-callout tos-callout-danger">
+              <p><strong>Healing Soul is not a medical service.</strong> Nothing in the App constitutes medical advice, psychological diagnosis, or treatment. See section&nbsp;12 for the full wellness disclaimer.</p>
+            </div>
+          </section>
+
+          <!-- 2 -->
+          <section class="tos-section" id="s2" aria-labelledby="s2-heading">
+            <span class="tos-section-num">Section 02</span>
+            <h2 class="tos-h2" id="s2-heading">Eligibility</h2>
+            <p class="tos-p">You must be at least <strong>18 years old</strong> to create an account and use the App. By accepting these Terms, you represent that you are 18 or older.</p>
+            <p class="tos-p">The App is available to users worldwide; however, it is operated from Australia and subject to Australian law. If local laws in your jurisdiction restrict your use of the App, you are responsible for complying with those laws.</p>
+          </section>
+
+          <!-- 3 -->
+          <section class="tos-section" id="s3" aria-labelledby="s3-heading">
+            <span class="tos-section-num">Section 03</span>
+            <h2 class="tos-h2" id="s3-heading">Your Account</h2>
+
+            <h3 class="tos-h3">3.1 Registration</h3>
+            <p class="tos-p">You must provide accurate, current, and complete information when creating your account. You are responsible for keeping your account information up to date.</p>
+
+            <h3 class="tos-h3">3.2 Account Security</h3>
+            <p class="tos-p">You are responsible for maintaining the confidentiality of your login credentials. You must notify us immediately at <a href="mailto:admin@healingsoul.com.au" style="color:var(--forest);text-decoration:underline;text-underline-offset:3px;">admin@healingsoul.com.au</a> if you suspect unauthorised access to your account.</p>
+
+            <h3 class="tos-h3">3.3 One Account Per Person</h3>
+            <p class="tos-p">Accounts are personal and non-transferable. You may not create an account on behalf of another person or share your account with others.</p>
+          </section>
+
+          <!-- 4 -->
+          <section class="tos-section" id="s4" aria-labelledby="s4-heading">
+            <span class="tos-section-num">Section 04</span>
+            <h2 class="tos-h2" id="s4-heading">Free and Premium Content</h2>
+
+            <h3 class="tos-h3">4.1 Free Tier</h3>
+            <p class="tos-p">The App is free to download and includes access to:</p>
+            <ul class="tos-ul">
+              <li>Up to 3 journalling prompts per pillar and intensity level (18 prompts total)</li>
+              <li>2 Releases (healing tools) per pillar (6 Releases total)</li>
+              <li>Mood tracking, lunar calendar, and ritual calendar features</li>
+            </ul>
+
+            <h3 class="tos-h3">4.2 Premium Subscription</h3>
+            <p class="tos-p">Accessing the full library of journalling prompts and Releases requires an active premium subscription. Premium plans are available as:</p>
+            <ul class="tos-ul">
+              <li>Monthly subscription</li>
+              <li>Annual subscription</li>
+              <li>Lifetime access (one-time purchase)</li>
+            </ul>
+            <p class="tos-p">Current pricing is displayed in the App at the time of purchase and may vary by region.</p>
+
+            <h3 class="tos-h3">4.3 Free Trial</h3>
+            <p class="tos-p">Monthly and annual plans include a <strong>7-day free trial</strong> for new subscribers. If you do not cancel before the trial ends, your chosen plan will automatically renew and you will be charged. Lifetime purchases are not eligible for a free trial.</p>
+          </section>
+
+          <!-- 5 -->
+          <section class="tos-section" id="s5" aria-labelledby="s5-heading">
+            <span class="tos-section-num">Section 05</span>
+            <h2 class="tos-h2" id="s5-heading">Billing and Payment</h2>
+
+            <h3 class="tos-h3">5.1 Payment Processing</h3>
+            <p class="tos-p">All purchases are processed through the Apple App Store or Google Play Store. By completing a purchase, you also agree to the terms and conditions of those platforms. We do not receive or store your payment card details.</p>
+
+            <h3 class="tos-h3">5.2 Automatic Renewal</h3>
+            <p class="tos-p">Monthly and annual subscriptions renew automatically at the end of each billing period unless cancelled at least 24 hours before renewal. Your payment method on file with Apple or Google will be charged.</p>
+
+            <h3 class="tos-h3">5.3 Managing or Cancelling Your Subscription</h3>
+            <p class="tos-p">To cancel or manage your subscription, go to your device's subscription settings:</p>
+            <div class="tos-inline-list">
+              <code>iOS: Settings - [Your Name] - Subscriptions</code>
+              <code>Android: Google Play - Profile - Payments &amp; subscriptions</code>
+            </div>
+            <p class="tos-p">You can also access a direct link from <strong>Settings - Subscription</strong> within the App. Cancelling stops future renewals; you retain access to premium features until the end of the current paid period.</p>
+
+            <h3 class="tos-h3">5.4 Refunds</h3>
+            <p class="tos-p">Refund requests are handled by Apple or Google under their respective refund policies. We do not control those policies and cannot issue refunds directly. To request a refund, contact Apple Support or Google Play support.</p>
+
+            <h3 class="tos-h3">5.5 Restore Purchases</h3>
+            <p class="tos-p">If you reinstall the App or sign in on a new device, use the <strong>Restore purchases</strong> button on the paywall screen to recover your subscription.</p>
+
+            <h3 class="tos-h3">5.6 Price Changes</h3>
+            <p class="tos-p">We may change subscription prices from time to time. Any price change will be communicated to you with reasonable advance notice. Continuing your subscription after the price change takes effect constitutes your acceptance of the new price.</p>
+          </section>
+
+          <!-- 6 -->
+          <section class="tos-section" id="s6" aria-labelledby="s6-heading">
+            <span class="tos-section-num">Section 06</span>
+            <h2 class="tos-h2" id="s6-heading">Your Content</h2>
+
+            <h3 class="tos-h3">6.1 Ownership</h3>
+            <p class="tos-p">You own all content you create in the App - your journal entries, mood notes, ritual reflections, and any photos you upload. We do not claim any intellectual property rights over your content.</p>
+
+            <h3 class="tos-h3">6.2 Licence to Us</h3>
+            <p class="tos-p">By storing content in the App, you grant us a limited, non-exclusive, royalty-free licence to store, process, and display that content solely for the purpose of providing the App's features to you. We do not use your content for any other purpose.</p>
+
+            <h3 class="tos-h3">6.3 No Admin Access to Your Journal Entries</h3>
+            <div class="tos-callout">
+              <p>No Healing Soul staff member, support agent, or administrator can read the text of your journal entries. This restriction is enforced at the database level. See our Privacy Policy for details.</p>
+            </div>
+
+            <h3 class="tos-h3">6.4 Your Responsibility</h3>
+            <p class="tos-p">You are solely responsible for the content you create in the App. You must not enter content that:</p>
+            <ul class="tos-ul">
+              <li>Contains personal information about others without their consent</li>
+              <li>Constitutes self-harm instructions, illegal material, or hateful content</li>
+            </ul>
+          </section>
+
+          <!-- 7 -->
+          <section class="tos-section" id="s7" aria-labelledby="s7-heading">
+            <span class="tos-section-num">Section 07</span>
+            <h2 class="tos-h2" id="s7-heading">Acceptable Use</h2>
+            <p class="tos-p">You agree not to:</p>
+            <ul class="tos-ul">
+              <li>Use the App in any way that violates applicable Australian law or the laws of your jurisdiction</li>
+              <li>Attempt to gain unauthorised access to any part of the App, its servers, or other users' accounts</li>
+              <li>Reverse-engineer, decompile, or extract the App's source code</li>
+              <li>Use automated tools (bots, scrapers) to access the App</li>
+              <li>Interfere with the App's operation or transmit malware or harmful code</li>
+              <li>Resell, sublicence, or commercially exploit the App or its content without our written permission</li>
+            </ul>
+          </section>
+
+          <!-- 8 -->
+          <section class="tos-section" id="s8" aria-labelledby="s8-heading">
+            <span class="tos-section-num">Section 08</span>
+            <h2 class="tos-h2" id="s8-heading">Intellectual Property</h2>
+            <p class="tos-p">All content provided within the App by us - including the healing tools ("Releases"), journalling prompts, lunar ritual templates, brand assets, user interface, and software - is owned by Healing Soul Pty Ltd or licensed to us, and is protected by Australian and international copyright law.</p>
+            <p class="tos-p">You may use App content solely for your personal, non-commercial use within the App. You may not reproduce, distribute, create derivative works from, or publicly display any App content without our prior written permission.</p>
+          </section>
+
+          <!-- 9 -->
+          <section class="tos-section" id="s9" aria-labelledby="s9-heading">
+            <span class="tos-section-num">Section 09</span>
+            <h2 class="tos-h2" id="s9-heading">Subscriptions Purchased Through the App Stores</h2>
+            <p class="tos-p">When you subscribe through the Apple App Store or Google Play Store, additional terms from those platforms apply. In the event of a conflict between those platform terms and these Terms regarding billing, the platform terms prevail with respect to the billing relationship.</p>
+          </section>
+
+          <!-- 10 -->
+          <section class="tos-section" id="s10" aria-labelledby="s10-heading">
+            <span class="tos-section-num">Section 10</span>
+            <h2 class="tos-h2" id="s10-heading">Third-Party Services</h2>
+            <p class="tos-p">The App integrates with third-party services (including Supabase, RevenueCat, PostHog, Sentry, Apple, and Google) to deliver its features. Your use of those services is subject to their respective terms of service. We are not responsible for the availability, accuracy, or conduct of any third-party service.</p>
+          </section>
+
+          <!-- 11 -->
+          <section class="tos-section" id="s11" aria-labelledby="s11-heading">
+            <span class="tos-section-num">Section 11</span>
+            <h2 class="tos-h2" id="s11-heading">Service Availability</h2>
+            <p class="tos-p">We aim to keep the App available and functioning at all times, but we do not guarantee uninterrupted access. The App may be temporarily unavailable due to maintenance, updates, or circumstances outside our control (including outages of third-party services on which we rely).</p>
+            <p class="tos-p">We may update or modify App features from time to time. We will provide reasonable notice of any changes that materially reduce your access to features you have paid for.</p>
+          </section>
+
+          <!-- 12 -->
+          <section class="tos-section" id="s12" aria-labelledby="s12-heading">
+            <span class="tos-section-num">Section 12</span>
+            <h2 class="tos-h2" id="s12-heading">Wellness and Health Disclaimer</h2>
+            <div class="tos-callout tos-callout-danger">
+              <p><strong>Healing Soul is a wellness and self-reflection tool only. It is not a substitute for professional medical or psychological advice, diagnosis, or treatment.</strong></p>
+              <p>The App's mood tracking, journalling prompts, healing tool content, and lunar ritual guidance are designed for self-directed personal growth. They do not constitute therapy, counselling, or clinical mental health support.</p>
+              <p>We are not a registered health service provider. Amy Dawson is a personal coach, not a licensed psychologist or medical practitioner.</p>
+              <p>If you are experiencing a mental health crisis, thoughts of self-harm, or a medical emergency, please contact a qualified health professional or emergency services immediately.</p>
+            </div>
+            <div class="tos-callout">
+              <p><strong>Australia:</strong> Lifeline - 13 11 14 &nbsp;|&nbsp; Beyond Blue - 1300 22 4636 &nbsp;|&nbsp; Emergency - 000</p>
+            </div>
+          </section>
+
+          <!-- 13 -->
+          <section class="tos-section" id="s13" aria-labelledby="s13-heading">
+            <span class="tos-section-num">Section 13</span>
+            <h2 class="tos-h2" id="s13-heading">Limitation of Liability</h2>
+
+            <h3 class="tos-h3">13.1 Consumer Guarantees</h3>
+            <p class="tos-p">Nothing in these Terms excludes, restricts, or modifies any right or remedy you have under the <em>Competition and Consumer Act 2010</em> (Cth) and the Australian Consumer Law, including consumer guarantees that cannot lawfully be excluded.</p>
+
+            <h3 class="tos-h3">13.2 Our Liability</h3>
+            <p class="tos-p">Subject to section 13.1, to the maximum extent permitted by law:</p>
+            <ul class="tos-ul">
+              <li>The App is provided "as is" and "as available" without warranty of any kind</li>
+              <li>We are not liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use the App</li>
+              <li>Our total liability to you for any claim arising from these Terms or your use of the App (other than claims that cannot be limited under Australian Consumer Law) is limited to the amount you paid us in the 12 months preceding the claim</li>
+            </ul>
+
+            <h3 class="tos-h3">13.3 Jurisdiction of Limitations</h3>
+            <p class="tos-p">Some jurisdictions do not allow certain limitations of liability. If you are located in such a jurisdiction, some of the limitations above may not apply to you.</p>
+          </section>
+
+          <!-- 14 -->
+          <section class="tos-section" id="s14" aria-labelledby="s14-heading">
+            <span class="tos-section-num">Section 14</span>
+            <h2 class="tos-h2" id="s14-heading">Indemnity</h2>
+            <p class="tos-p">You agree to indemnify and hold harmless Healing Soul Pty Ltd, its directors, employees, and agents from any claims, losses, costs, or expenses (including reasonable legal fees) arising from:</p>
+            <ul class="tos-ul">
+              <li>Your breach of these Terms</li>
+              <li>Content you submit through the App</li>
+              <li>Your violation of any applicable law</li>
+            </ul>
+          </section>
+
+          <!-- 15 -->
+          <section class="tos-section" id="s15" aria-labelledby="s15-heading">
+            <span class="tos-section-num">Section 15</span>
+            <h2 class="tos-h2" id="s15-heading">Termination</h2>
+
+            <h3 class="tos-h3">15.1 Termination by You</h3>
+            <p class="tos-p">You may terminate your account at any time by deleting it from <strong>Settings - Account deletion</strong> within the App. Deleting your account cancels any future subscription renewals, but you will retain access to premium features until the end of your current paid period (Apple and Google billing cycles apply).</p>
+
+            <h3 class="tos-h3">15.2 Termination by Us</h3>
+            <p class="tos-p">We may suspend or terminate your account if:</p>
+            <ul class="tos-ul">
+              <li>You breach these Terms</li>
+              <li>You engage in conduct that is harmful, illegal, or puts other users at risk</li>
+              <li>You fail to pay applicable subscription fees (managed by Apple or Google)</li>
+            </ul>
+            <p class="tos-p">We will notify you before termination where practicable, unless the breach is serious or involves illegal conduct.</p>
+
+            <h3 class="tos-h3">15.3 Effect of Termination</h3>
+            <p class="tos-p">On termination, your right to use the App ceases immediately. Your content will be handled in accordance with our Privacy Policy data retention terms.</p>
+          </section>
+
+          <!-- 16 -->
+          <section class="tos-section" id="s16" aria-labelledby="s16-heading">
+            <span class="tos-section-num">Section 16</span>
+            <h2 class="tos-h2" id="s16-heading">Governing Law and Dispute Resolution</h2>
+            <p class="tos-p">These Terms are governed by the laws of New South Wales, Australia.</p>
+            <p class="tos-p">If you have a dispute with us, we encourage you to contact us first at <a href="mailto:admin@healingsoul.com.au" style="color:var(--forest);text-decoration:underline;text-underline-offset:3px;">admin@healingsoul.com.au</a> to try to resolve it informally. If we cannot resolve the dispute within 30 days, either party may refer the dispute to a mediator mutually agreed upon, or to a court of competent jurisdiction in New South Wales.</p>
+            <p class="tos-p">If you are a consumer under Australian Consumer Law, you may also contact the Australian Competition and Consumer Commission (ACCC) or your state's consumer affairs body.</p>
+          </section>
+
+          <!-- 17 -->
+          <section class="tos-section" id="s17" aria-labelledby="s17-heading">
+            <span class="tos-section-num">Section 17</span>
+            <h2 class="tos-h2" id="s17-heading">Changes to These Terms</h2>
+            <p class="tos-p">We may update these Terms from time to time. We will notify you of material changes by:</p>
+            <ul class="tos-ul">
+              <li>Displaying an in-app notification requiring you to review and accept the updated Terms before continuing to use the App</li>
+              <li>Updating the version number and "Last updated" date</li>
+            </ul>
+            <p class="tos-p">Continued use of the App after accepting an updated version constitutes your agreement to the new Terms.</p>
+          </section>
+
+          <!-- 18 -->
+          <section class="tos-section" id="s18" aria-labelledby="s18-heading">
+            <span class="tos-section-num">Section 18</span>
+            <h2 class="tos-h2" id="s18-heading">General</h2>
+            <p class="tos-p"><strong>Entire agreement.</strong> These Terms, together with our Privacy Policy, constitute the entire agreement between you and us regarding the App.</p>
+            <p class="tos-p"><strong>Severability.</strong> If any provision of these Terms is found unenforceable, that provision will be modified to the minimum extent necessary to make it enforceable, and the remaining provisions will continue in full force.</p>
+            <p class="tos-p"><strong>No waiver.</strong> Our failure to enforce any provision of these Terms does not constitute a waiver of our right to enforce it later.</p>
+            <p class="tos-p"><strong>Assignment.</strong> You may not assign your rights under these Terms without our written consent. We may assign our rights in connection with a merger, acquisition, or sale of our business.</p>
+          </section>
+
+          <!-- 19 -->
+          <section class="tos-section" id="s19" aria-labelledby="s19-heading">
+            <span class="tos-section-num">Section 19</span>
+            <h2 class="tos-h2" id="s19-heading">Contact Us</h2>
+            <div class="tos-contact-box">
+              <p><strong>Healing Soul Pty Ltd</strong></p>
+              <p>ABN: 79&nbsp;511&nbsp;598&nbsp;831</p>
+              <p>239/21 Arches Crescent, Alderley, 4051, QLD</p>
+              <p>Email: <a href="mailto:admin@healingsoul.com.au">admin@healingsoul.com.au</a></p>
+              <p>Website: <a href="https://www.healingsoul.com.au">www.healingsoul.com.au</a></p>
+            </div>
+            <p class="tos-p" style="margin-top:20px; font-size:13px; color:rgba(92,138,104,.6); font-style:italic;">These Terms of Service are governed by the laws of New South Wales, Australia.</p>
+          </section>
+
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <!-- ====================================================
+       FOOTER
+  ==================================================== -->
+  <footer id="footer">
+    <div class="wrap">
+      <div class="foot-inner">
+        <div class="foot-logo">
+          <img src="logo-real-light.png" alt="Healing Soul icon">
+          <span class="foot-name">Healing Soul</span>
+        </div>
+        <span class="foot-tag">Heal Deep. Live Whole.</span>
+        <span class="foot-copy">&copy; 2026 Healing Soul. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================
+       JAVASCRIPT
+  ==================================================== -->
+  <script>
+  (function() {
+    'use strict';
+
+    /* CUSTOM CURSOR */
+    var dot  = document.getElementById('cur-dot');
+    var ring = document.getElementById('cur-ring');
+
+    if (window.matchMedia('(hover: hover)').matches) {
+      var rx = 0, ry = 0, mx = 0, my = 0;
+
+      document.addEventListener('mousemove', function(e) {
+        mx = e.clientX; my = e.clientY;
+        dot.style.left = mx + 'px';
+        dot.style.top  = my + 'px';
+      });
+
+      (function raf() {
+        rx += (mx - rx) * 0.13;
+        ry += (my - ry) * 0.13;
+        ring.style.left = rx + 'px';
+        ring.style.top  = ry + 'px';
+        requestAnimationFrame(raf);
+      })();
+
+      document.querySelectorAll('a, button, [role="button"]').forEach(function(el) {
+        el.addEventListener('mouseenter', function() { document.body.classList.add('cur-hover'); });
+        el.addEventListener('mouseleave', function() { document.body.classList.remove('cur-hover'); });
+      });
+    }
+
+    /* HAMBURGER MENU */
+    var ham = document.getElementById('ham');
+    var mob = document.getElementById('mob');
+
+    function openMenu(open) {
+      ham.classList.toggle('open', open);
+      ham.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) {
+        mob.style.display = 'flex';
+        requestAnimationFrame(function() { mob.classList.add('open'); });
+        document.body.style.overflow = 'hidden';
+      } else {
+        mob.classList.remove('open');
+        document.body.style.overflow = '';
+        setTimeout(function() { mob.style.display = 'none'; }, 310);
+      }
+    }
+
+    ham.addEventListener('click', function() { openMenu(!ham.classList.contains('open')); });
+    ham.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') openMenu(!ham.classList.contains('open'));
+    });
+    mob.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() { openMenu(false); });
+    });
+
+    /* TOC ACTIVE HIGHLIGHT on scroll */
+    var sections = document.querySelectorAll('.tos-section[id]');
+    var tocLinks = document.querySelectorAll('.toc-list a');
+
+    if (tocLinks.length) {
+      window.addEventListener('scroll', function() {
+        var scrollY = window.scrollY + 160;
+        var active = null;
+        sections.forEach(function(s) {
+          if (s.offsetTop <= scrollY) active = s.id;
+        });
+        tocLinks.forEach(function(a) {
+          var href = a.getAttribute('href').replace('#', '');
+          a.style.color = href === active ? 'var(--forest)' : '';
+          a.style.borderLeftColor = href === active ? 'var(--terracotta)' : '';
+        });
+      }, { passive: true });
+    }
+
+  })();
+  </script>
+
+</body>
+</html>
