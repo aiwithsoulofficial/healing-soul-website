@@ -848,9 +848,9 @@
       background: var(--night); padding: 130px 0; position: relative; overflow: hidden;
     }
     #contact::before {
-      content: ''; position: absolute; inset: 0;
+      content: ''; position: absolute; inset: -4px;
       background: url('mood-growth.webp') center/cover no-repeat;
-      z-index: 0;
+      z-index: 0; filter: blur(4px);
     }
     #contact::after {
       content: ''; position: absolute; inset: 0;
@@ -1531,6 +1531,7 @@
         <span class="foot-tag">Heal Deep. Live Whole.</span>
         <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
           <a href="termsandconditions.html" style="font-size:11px;letter-spacing:.08em;color:rgba(200,230,201,.28);transition:color .2s;" onmouseover="this.style.color='rgba(200,230,201,.65)'" onmouseout="this.style.color='rgba(200,230,201,.28)'">Terms &amp; Conditions</a>
+          <a href="privacypolicy.html" style="font-size:11px;letter-spacing:.08em;color:rgba(200,230,201,.28);transition:color .2s;" onmouseover="this.style.color='rgba(200,230,201,.65)'" onmouseout="this.style.color='rgba(200,230,201,.28)'">Privacy Policy</a>
           <span class="foot-copy">&copy; 2026 Healing Soul. All rights reserved.</span>
         </div>
       </div>

@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - Healing Soul</title>
+  <meta name="description" content="Privacy Policy for the Healing Soul mobile application. Effective 1 July 2026.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest:      #1F4D32;
+      --forest-alt:  #297d4e;
+      --sage:        #5C8A68;
+      --highlight:   #8FD4A4;
+      --terracotta:  #C4855A;
+      --earth:       #8C6347;
+      --cream:       #F5F0E8;
+      --cream-alt:   #EDE4D3;
+      --night:       #1A2C1E;
+      --night-deep:  #0f1a11;
+      --f-display:   'Cormorant Garamond', Georgia, serif;
+      --f-body:      'DM Sans', system-ui, sans-serif;
+      --radius-sm:   6px;
+      --radius-md:   12px;
+      --radius-lg:   20px;
+      --radius-full: 9999px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--f-body);
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--night);
+      background: var(--cream);
+      cursor: none;
+      overflow-x: hidden;
+    }
+
+    img  { max-width: 100%; display: block; }
+    a    { color: inherit; text-decoration: none; }
+
+    /* FILM GRAIN */
+    #grain {
+      position: fixed; inset: -50%;
+      width: 200%; height: 200%;
+      pointer-events: none; z-index: 9997;
+      opacity: 0.032;
+      animation: grain 0.35s steps(1) infinite;
+    }
+    @keyframes grain {
+      0%   { background-position:   0%   0%; }
+      10%  { background-position:  -5% -10%; }
+      20%  { background-position: -15%   5%; }
+      30%  { background-position:   7% -25%; }
+      40%  { background-position:  -5%  25%; }
+      50%  { background-position: -15%  10%; }
+      60%  { background-position:  15%   0%; }
+      70%  { background-position:   0%  15%; }
+      80%  { background-position:   3%  35%; }
+      90%  { background-position: -10%  10%; }
+      100% { background-position:   0%   0%; }
+    }
+
+    /* CURSOR */
+    #cur-dot {
+      position: fixed; width: 8px; height: 8px;
+      border-radius: 50%; background: var(--forest);
+      pointer-events: none; z-index: 99999;
+      transform: translate(-50%,-50%); transition: opacity .2s;
+    }
+    #cur-ring {
+      position: fixed; width: 34px; height: 34px;
+      border-radius: 50%; border: 1.5px solid rgba(31,77,50,.45);
+      pointer-events: none; z-index: 99998;
+      transform: translate(-50%,-50%);
+      transition: width .2s, height .2s, border-color .2s;
+    }
+    body.cur-hover #cur-ring { width: 54px; height: 54px; border-color: var(--terracotta); }
+    @media (hover: none) { #cur-dot, #cur-ring { display: none; } body { cursor: auto; } }
+
+    /* NAV */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 8000;
+      padding: 22px 0;
+      background: rgba(245,240,232,.96);
+      backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+      box-shadow: 0 2px 28px rgba(26,44,30,.07);
+    }
+    .nav-wrap {
+      max-width: 1440px; margin: 0 auto; padding: 0 52px;
+      display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    }
+    .nav-logo { display: flex; align-items: center; flex-shrink: 0; }
+    .nav-logo img { height: 72px; width: auto; }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 12px; font-weight: 500; letter-spacing: .13em; text-transform: uppercase;
+      color: rgba(26,44,30,.65); transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--forest); }
+    .nav-cta {
+      font-size: 12px !important; font-weight: 500 !important;
+      letter-spacing: .1em !important; text-transform: uppercase !important;
+      color: var(--cream) !important; background: var(--terracotta);
+      padding: 10px 26px; border-radius: var(--radius-full);
+      transition: background .2s, transform .2s !important;
+    }
+    .nav-cta:hover { background: var(--earth) !important; transform: translateY(-1px); }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 6px; z-index: 8002;
+    }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--night); transition: transform .3s, opacity .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mob-menu {
+      display: none; position: fixed; inset: 0;
+      background: var(--night); z-index: 8001;
+      flex-direction: column; align-items: center; justify-content: center; gap: 40px;
+      opacity: 0; transition: opacity .3s;
+    }
+    .mob-menu.open { opacity: 1; }
+    .mob-menu a {
+      font-family: var(--f-display); font-size: clamp(28px,7vw,52px);
+      font-weight: 400; color: var(--cream); letter-spacing: .04em; transition: color .2s;
+    }
+    .mob-menu a:hover { color: var(--highlight); }
+    .mob-menu .mob-cta {
+      font-family: var(--f-body); font-size: 14px; letter-spacing: .1em;
+      text-transform: uppercase; background: var(--terracotta);
+      color: var(--cream); padding: 16px 48px; border-radius: var(--radius-full);
+    }
+
+    /* CONTAINERS */
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 52px; }
+
+    .divider {
+      display: flex; align-items: center; justify-content: center; gap: 18px; padding: 8px 0;
+    }
+    .divider::before, .divider::after { content: ''; width: 72px; height: 1px; background: currentColor; opacity: .25; }
+    .divider-gem { width: 6px; height: 6px; background: var(--terracotta); transform: rotate(45deg); flex-shrink: 0; }
+
+    /* PAGE HERO */
+    #page-hero {
+      background: var(--night); padding: 160px 0 90px;
+      position: relative; overflow: hidden;
+    }
+    #page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('mood-healing.jpg') center/cover no-repeat;
+      z-index: 0; opacity: .35;
+    }
+    #page-hero::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(15,26,17,.9) 0%, rgba(31,77,50,.8) 100%);
+      z-index: 0;
+    }
+    .page-hero-ghost {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--f-display); font-size: 22vw; font-weight: 300;
+      color: rgba(143,212,164,.022); white-space: nowrap;
+      pointer-events: none; letter-spacing: -.02em;
+      z-index: 0; line-height: 1; user-select: none;
+    }
+    .page-hero-inner { position: relative; z-index: 2; text-align: center; }
+    .page-eyebrow {
+      display: block; font-size: 10px; font-weight: 500;
+      letter-spacing: .3em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 20px;
+    }
+    .page-h1 {
+      font-family: var(--f-display); font-size: clamp(40px, 6vw, 88px);
+      font-weight: 300; line-height: 1.05; color: var(--cream); margin-bottom: 24px;
+    }
+    .page-meta {
+      display: flex; align-items: center; justify-content: center;
+      gap: 32px; flex-wrap: wrap;
+      font-size: 12px; letter-spacing: .15em; text-transform: uppercase;
+      color: rgba(200,230,201,.45);
+    }
+    .page-meta span { display: flex; align-items: center; gap: 8px; }
+    .page-meta-dot { width: 4px; height: 4px; background: var(--terracotta); border-radius: 50%; flex-shrink: 0; }
+
+    /* DOCUMENT */
+    #doc { background: var(--cream); padding: 100px 0 120px; position: relative; }
+
+    .doc-layout { display: grid; grid-template-columns: 240px 1fr; gap: 80px; align-items: start; }
+
+    .toc { position: sticky; top: 110px; }
+    .toc-label { font-size: 9px; letter-spacing: .3em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 20px; display: block; }
+    .toc-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .toc-list a {
+      font-size: 12px; font-weight: 400; color: var(--sage);
+      line-height: 1.5; transition: color .2s; display: block;
+      padding: 3px 0 3px 12px; border-left: 2px solid transparent;
+    }
+    .toc-list a:hover { color: var(--forest); border-left-color: var(--terracotta); }
+    .toc-divider { width: 100%; height: 1px; background: rgba(92,138,104,.15); margin: 16px 0; }
+    .toc-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--sage); transition: color .2s; margin-top: 24px;
+    }
+    .toc-back:hover { color: var(--forest); }
+    .toc-back svg { width: 14px; height: 14px; stroke: currentColor; }
+
+    .doc-content { max-width: 720px; }
+
+    .tos-intro {
+      font-size: 16px; line-height: 1.85; color: var(--sage);
+      margin-bottom: 56px; padding-bottom: 40px;
+      border-bottom: 1px solid rgba(92,138,104,.15);
+    }
+    .tos-intro strong { color: var(--night); font-weight: 500; }
+
+    .tos-section {
+      margin-bottom: 52px; padding-bottom: 52px;
+      border-bottom: 1px solid rgba(92,138,104,.1);
+      scroll-margin-top: 120px;
+    }
+    .tos-section:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .tos-section-num {
+      display: block; font-size: 10px; font-weight: 500;
+      letter-spacing: .28em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 10px;
+    }
+    .tos-h2 {
+      font-family: var(--f-display); font-size: clamp(22px, 2.5vw, 34px);
+      font-weight: 400; color: var(--night); line-height: 1.2; margin-bottom: 22px;
+    }
+    .tos-h3 {
+      font-family: var(--f-display); font-size: 20px; font-weight: 500;
+      color: var(--night); margin: 28px 0 12px; line-height: 1.25;
+    }
+    .tos-p {
+      font-size: 15px; line-height: 1.85; color: var(--sage); margin-bottom: 16px;
+    }
+    .tos-p:last-child { margin-bottom: 0; }
+    .tos-p strong { color: var(--night); font-weight: 500; }
+    .tos-p em { font-style: italic; }
+    .tos-p a { color: var(--forest); text-decoration: underline; text-underline-offset: 3px; }
+    .tos-p a:hover { color: var(--terracotta); }
+
+    .tos-ul {
+      list-style: none; margin: 16px 0 20px; padding: 0;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .tos-ul li {
+      font-size: 15px; line-height: 1.75; color: var(--sage);
+      padding-left: 20px; position: relative;
+    }
+    .tos-ul li::before {
+      content: ''; position: absolute; left: 0; top: 11px;
+      width: 5px; height: 5px; background: var(--terracotta); border-radius: 50%;
+    }
+    .tos-ul li strong { color: var(--night); font-weight: 500; }
+
+    .tos-callout {
+      background: rgba(31,77,50,.05);
+      border: 1px solid rgba(31,77,50,.12);
+      border-left: 3px solid var(--forest);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      padding: 28px 28px 28px 24px; margin: 24px 0;
+    }
+    .tos-callout p { font-size: 15px; line-height: 1.8; color: var(--sage); margin-bottom: 12px; }
+    .tos-callout p:last-child { margin-bottom: 0; }
+    .tos-callout strong { color: var(--night); font-weight: 500; }
+
+    .tos-callout-danger {
+      background: rgba(196,133,90,.06);
+      border-color: rgba(196,133,90,.2);
+      border-left-color: var(--terracotta);
+    }
+
+    /* Data table */
+    .tos-table-wrap { overflow-x: auto; margin: 20px 0; }
+    .tos-table {
+      width: 100%; border-collapse: collapse; font-size: 14px;
+    }
+    .tos-table th {
+      text-align: left; font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--terracotta); font-weight: 500;
+      padding: 10px 16px; border-bottom: 1px solid rgba(92,138,104,.2);
+    }
+    .tos-table td {
+      padding: 14px 16px; color: var(--sage); line-height: 1.6;
+      border-bottom: 1px solid rgba(92,138,104,.08); vertical-align: top;
+    }
+    .tos-table td strong { color: var(--night); font-weight: 500; }
+    .tos-table tr:last-child td { border-bottom: none; }
+    .tos-table tr:hover td { background: rgba(92,138,104,.04); }
+
+    .tos-rights-block { display: flex; flex-direction: column; gap: 24px; margin-top: 20px; }
+    .tos-right {
+      padding: 22px 24px;
+      background: rgba(31,77,50,.04);
+      border: 1px solid rgba(92,138,104,.12);
+      border-radius: var(--radius-md);
+    }
+    .tos-right-title {
+      font-family: var(--f-display); font-size: 18px; font-weight: 500;
+      color: var(--night); margin-bottom: 8px;
+    }
+    .tos-right p { font-size: 14px; line-height: 1.75; color: var(--sage); }
+    .tos-right p strong { color: var(--night); font-weight: 500; }
+
+    .tos-contact-box {
+      background: rgba(31,77,50,.05); border: 1px solid rgba(92,138,104,.15);
+      border-radius: var(--radius-md); padding: 32px 36px; margin-top: 24px;
+    }
+    .tos-contact-box p { font-size: 15px; line-height: 1.8; color: var(--sage); margin-bottom: 8px; }
+    .tos-contact-box p:last-child { margin-bottom: 0; }
+    .tos-contact-box strong { color: var(--night); font-weight: 500; }
+    .tos-contact-box a { color: var(--forest); text-decoration: underline; text-underline-offset: 3px; }
+    .tos-contact-box a:hover { color: var(--terracotta); }
+
+    /* FOOTER */
+    #footer { background: var(--night-deep); padding: 56px 0; }
+    .foot-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .foot-logo { display: flex; align-items: center; gap: 10px; }
+    .foot-logo img { height: 30px; width: auto; opacity: .7; }
+    .foot-name { font-family: var(--f-display); font-size: 17px; font-weight: 400; color: var(--cream); opacity: .65; }
+    .foot-tag { font-family: var(--f-display); font-size: 15px; font-style: italic; color: rgba(200,230,201,.35); }
+    .foot-copy { font-size: 11px; letter-spacing: .08em; color: rgba(200,230,201,.28); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1080px) { .doc-layout { grid-template-columns: 1fr; gap: 0; } .toc { display: none; } }
+
+    @media (max-width: 768px) {
+      body, a { cursor: auto; } #cur-dot, #cur-ring { display: none; }
+      .wrap { padding: 0 20px; } .nav-wrap { padding: 0 20px; }
+      .nav-links { display: none; } .hamburger { display: flex; }
+      .nav-logo img { height: 44px; } #nav { padding: 16px 0; }
+      #page-hero { padding: 120px 0 64px; }
+      .page-h1 { font-size: clamp(32px, 10vw, 56px); }
+      .page-hero-ghost { display: none; }
+      #doc { padding: 64px 0 80px; }
+      .tos-table { font-size: 13px; } .tos-table th, .tos-table td { padding: 10px 10px; }
+      .tos-contact-box { padding: 24px 20px; }
+      .foot-inner { flex-direction: column; text-align: center; gap: 14px; }
+    }
+
+    @media (max-width: 480px) { .wrap { padding: 0 16px; } .nav-wrap { padding: 0 16px; } }
+
+    @media print {
+      #grain, #cur-dot, #cur-ring, #nav, .toc { display: none !important; }
+      #doc { padding: 24px 0; } #page-hero { padding: 40px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <svg id="grain" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <filter id="fn">
+      <feTurbulence type="fractalNoise" baseFrequency="0.68" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#fn)"/>
+  </svg>
+
+  <div id="cur-dot" aria-hidden="true"></div>
+  <div id="cur-ring" aria-hidden="true"></div>
+
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-wrap">
+      <a href="index.html" class="nav-logo" aria-label="Healing Soul home">
+        <img src="logo-real.png" alt="Healing Soul">
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="index.html#pillars">The App</a></li>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="index.html#how">How It Works</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Get Early Access</a></li>
+      </ul>
+      <div class="hamburger" id="ham" role="button" tabindex="0" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mob-menu" id="mob" role="dialog" aria-modal="true" aria-label="Navigation">
+    <a href="index.html#pillars" class="mob-lnk">The App</a>
+    <a href="index.html#features" class="mob-lnk">Features</a>
+    <a href="index.html#how" class="mob-lnk">How It Works</a>
+    <a href="index.html#contact" class="mob-cta">Get Early Access</a>
+  </div>
+
+  <section id="page-hero" aria-label="Privacy Policy">
+    <div class="page-hero-ghost" aria-hidden="true">Privacy</div>
+    <div class="wrap">
+      <div class="page-hero-inner">
+        <div class="divider" style="margin-bottom:28px; color: rgba(245,240,232,.25);" aria-hidden="true">
+          <div class="divider-gem"></div>
+        </div>
+        <span class="page-eyebrow">Legal</span>
+        <h1 class="page-h1">Privacy Policy</h1>
+        <div class="page-meta" role="list">
+          <span role="listitem"><span class="page-meta-dot"></span>Effective 1 July 2026</span>
+          <span role="listitem"><span class="page-meta-dot"></span>Last updated 2 June 2026</span>
+          <span role="listitem"><span class="page-meta-dot"></span>Version 1.0</span>
+        </div>
+        <div class="divider" style="margin-top:36px; color: rgba(245,240,232,.2);" aria-hidden="true">
+          <div class="divider-gem"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main id="doc" aria-label="Privacy Policy document">
+    <div class="wrap">
+      <div class="doc-layout">
+
+        <nav class="toc" aria-label="Document contents">
+          <span class="toc-label">Contents</span>
+          <ul class="toc-list">
+            <li><a href="#s1">1. Who We Are</a></li>
+            <li><a href="#s2">2. What We Collect</a></li>
+            <li><a href="#s3">3. How We Collect It</a></li>
+            <li><a href="#s4">4. Why We Use It</a></li>
+            <li><a href="#s5">5. Disclosure</a></li>
+            <li><a href="#s6">6. Sensitive Information</a></li>
+            <li><a href="#s7">7. Overseas Disclosure</a></li>
+            <li><a href="#s8">8. Storage &amp; Security</a></li>
+            <li><a href="#s9">9. Data Retention</a></li>
+            <li><a href="#s10">10. Your Rights</a></li>
+            <li><a href="#s11">11. Children's Privacy</a></li>
+            <li><a href="#s12">12. Not Medical Advice</a></li>
+            <li><a href="#s13">13. Third-Party Links</a></li>
+            <li><a href="#s14">14. Changes to This Policy</a></li>
+            <li><a href="#s15">15. Complaints</a></li>
+            <li><a href="#s16">16. Contact Us</a></li>
+          </ul>
+          <div class="toc-divider"></div>
+          <a href="index.html" class="toc-back">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            Back to site
+          </a>
+        </nav>
+
+        <article class="doc-content">
+
+          <div class="tos-intro">
+            <strong>Healing Soul Pty Ltd (ABN 79&nbsp;511&nbsp;598&nbsp;831)</strong> ("we", "us", "our") operates the Healing Soul mobile application ("App"). This Privacy Policy explains how we collect, use, store, and disclose your personal information when you use the App, and sets out your rights under the <em>Privacy Act 1988</em> (Cth) and the Australian Privacy Principles (APPs).
+            <br><br>
+            By creating an account or using the App, you consent to the practices described in this policy.
+          </div>
+
+          <!-- 1 -->
+          <section class="tos-section" id="s1" aria-labelledby="s1-heading">
+            <span class="tos-section-num">Section 01</span>
+            <h2 class="tos-h2" id="s1-heading">Who We Are</h2>
+            <div class="tos-contact-box">
+              <p><strong>Healing Soul Pty Ltd</strong></p>
+              <p>ABN: 79&nbsp;511&nbsp;598&nbsp;831</p>
+              <p>239/21 Arches Crescent, Alderley, 4051, QLD</p>
+              <p>Email: <a href="mailto:admin@healingsoul.com.au">admin@healingsoul.com.au</a></p>
+            </div>
+            <p class="tos-p" style="margin-top:20px;">If you have a question or complaint about how we handle your information, please contact us at the address above.</p>
+          </section>
+
+          <!-- 2 -->
+          <section class="tos-section" id="s2" aria-labelledby="s2-heading">
+            <span class="tos-section-num">Section 02</span>
+            <h2 class="tos-h2" id="s2-heading">What Personal Information We Collect</h2>
+            <p class="tos-p">We collect information that you provide directly, information generated by your use of the App, and limited technical information.</p>
+
+            <h3 class="tos-h3">2.1 Account Information</h3>
+            <ul class="tos-ul">
+              <li>Email address</li>
+              <li>Display name</li>
+              <li>Profile photo or tone-colour preference (optional)</li>
+              <li>Focus areas you select (Mind, Body, Soul pillars)</li>
+              <li>Timezone and preferred check-in time</li>
+            </ul>
+
+            <h3 class="tos-h3">2.2 Wellness and Content Information (sensitive information)</h3>
+            <p class="tos-p">Your mood check-ins, journal entries, healing tool completions, and lunar ritual reflections contain information about your mental and emotional wellbeing. Under the <em>Privacy Act 1988</em>, this is <strong>sensitive information</strong> — specifically, information about your health and psychological state.</p>
+            <p class="tos-p">We collect:</p>
+            <ul class="tos-ul">
+              <li>Mood check-in data: emotional state, sentiment rating, personal notes, emotional themes</li>
+              <li>Journal entries: text you write and photos you choose to attach</li>
+              <li>Healing tool and release completion records and reflections</li>
+              <li>Lunar ritual entry text</li>
+            </ul>
+            <div class="tos-callout">
+              <p>You provide this information voluntarily for the sole purpose of delivering the App's features. We use it only for that purpose and do not analyse, share, or sell it. <strong>No Healing Soul staff member, support agent, or administrator can read the text of your journal entries.</strong> Access is blocked at the database level.</p>
+            </div>
+
+            <h3 class="tos-h3">2.3 Subscription and Payment Information</h3>
+            <ul class="tos-ul">
+              <li>Subscription status (active, trialling, cancelled)</li>
+              <li>Purchase history (plan type and period)</li>
+            </ul>
+            <p class="tos-p">We do <strong>not</strong> receive or store your payment card details. All payment processing is handled by Apple (App Store) or Google (Play Store). We receive only a transaction confirmation and entitlement status from RevenueCat.</p>
+
+            <h3 class="tos-h3">2.4 Device and Notification Information</h3>
+            <ul class="tos-ul">
+              <li>Push notification token (to send you reminders you have requested)</li>
+              <li>Device type (iOS or Android) — inferred from the platform only</li>
+            </ul>
+
+            <h3 class="tos-h3">2.5 Analytics and Crash Data</h3>
+            <ul class="tos-ul">
+              <li>Feature usage events (e.g. which screens you visit, when a tool completion occurs) via PostHog</li>
+              <li>Crash reports and performance traces via Sentry</li>
+            </ul>
+            <p class="tos-p">These events are linked to your user account for the purpose of improving app stability and features. We do not use this data for advertising or sell it to any third party.</p>
+          </section>
+
+          <!-- 3 -->
+          <section class="tos-section" id="s3" aria-labelledby="s3-heading">
+            <span class="tos-section-num">Section 03</span>
+            <h2 class="tos-h2" id="s3-heading">How We Collect Your Information</h2>
+            <p class="tos-p">We collect information:</p>
+            <ul class="tos-ul">
+              <li>Directly from you when you create an account, complete onboarding, or use the App's features</li>
+              <li>Automatically through your use of the App (analytics events, crash reports)</li>
+              <li>From Apple or Google when you complete an in-app purchase (subscription confirmation only)</li>
+            </ul>
+            <p class="tos-p">We do not purchase, source, or infer personal information from data brokers or third-party databases.</p>
+          </section>
+
+          <!-- 4 -->
+          <section class="tos-section" id="s4" aria-labelledby="s4-heading">
+            <span class="tos-section-num">Section 04</span>
+            <h2 class="tos-h2" id="s4-heading">Why We Collect and Use Your Information</h2>
+            <p class="tos-p">We only use your personal information for the purpose for which it was collected, or a directly related purpose.</p>
+            <div class="tos-table-wrap">
+              <table class="tos-table">
+                <thead>
+                  <tr>
+                    <th>Information</th>
+                    <th>Primary purpose</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Account information</td>
+                    <td>Create and manage your account; authenticate your identity; personalise the experience</td>
+                  </tr>
+                  <tr>
+                    <td>Mood, journal, tool, and ritual data</td>
+                    <td>Deliver the core wellness features; generate mood-based content recommendations; calculate your streak</td>
+                  </tr>
+                  <tr>
+                    <td>Subscription data</td>
+                    <td>Verify your entitlement to premium features; maintain accurate subscription records</td>
+                  </tr>
+                  <tr>
+                    <td>Push notification token</td>
+                    <td>Send reminders and lunar notifications that you have opted into</td>
+                  </tr>
+                  <tr>
+                    <td>Analytics events</td>
+                    <td>Understand aggregate feature usage to improve the App; detect and fix bugs</td>
+                  </tr>
+                  <tr>
+                    <td>Crash and performance data</td>
+                    <td>Diagnose and resolve technical errors</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="tos-callout tos-callout-danger">
+              <p>We will never use your wellness data (mood check-ins, journal entries, ritual reflections) for advertising, profiling for sale to third parties, or any purpose other than delivering the features you use.</p>
+            </div>
+          </section>
+
+          <!-- 5 -->
+          <section class="tos-section" id="s5" aria-labelledby="s5-heading">
+            <span class="tos-section-num">Section 05</span>
+            <h2 class="tos-h2" id="s5-heading">Disclosure of Your Information</h2>
+            <p class="tos-p">We do not sell, rent, or trade your personal information.</p>
+            <p class="tos-p">We disclose personal information to the following third-party service providers who help us operate the App. Each provider acts under contractual obligations to protect your information and may process data in countries outside Australia (see section&nbsp;7).</p>
+            <div class="tos-table-wrap">
+              <table class="tos-table">
+                <thead>
+                  <tr>
+                    <th>Provider</th>
+                    <th>Purpose</th>
+                    <th>Data shared</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Supabase Inc</strong> (USA / Australia)</td>
+                    <td>Database, authentication, file storage</td>
+                    <td>All App data except payment card details</td>
+                  </tr>
+                  <tr>
+                    <td><strong>RevenueCat Inc</strong> (USA)</td>
+                    <td>Subscription and in-app purchase management</td>
+                    <td>User ID, subscription status, purchase events</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sentry Inc</strong> (USA)</td>
+                    <td>Error tracking and performance monitoring</td>
+                    <td>User ID, crash reports, performance traces</td>
+                  </tr>
+                  <tr>
+                    <td><strong>PostHog Inc</strong> (USA / EU)</td>
+                    <td>Product analytics</td>
+                    <td>User ID, anonymised usage events</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Apple Inc</strong> (USA)</td>
+                    <td>Push notification delivery (APNs)</td>
+                    <td>Device push token</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Google LLC</strong> (USA)</td>
+                    <td>Push notification delivery (FCM)</td>
+                    <td>Device push token</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Resend Inc</strong> (USA)</td>
+                    <td>Transactional email (data export delivery)</td>
+                    <td>Email address, signed download link</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="tos-p">We do not disclose your information to any other third party except:</p>
+            <ul class="tos-ul">
+              <li>Where required by Australian law, a court order, or a regulator (e.g. the Office of the Australian Information Commissioner)</li>
+              <li>To professional advisers (lawyers, accountants) bound by confidentiality obligations</li>
+              <li>In connection with a sale or merger of our business, where we will notify you in advance</li>
+            </ul>
+          </section>
+
+          <!-- 6 -->
+          <section class="tos-section" id="s6" aria-labelledby="s6-heading">
+            <span class="tos-section-num">Section 06</span>
+            <h2 class="tos-h2" id="s6-heading">Sensitive Information</h2>
+            <p class="tos-p">Your mood and journal data is <strong>sensitive information</strong> within the meaning of the <em>Privacy Act 1988</em> because it relates to your mental health and psychological wellbeing.</p>
+            <p class="tos-p">We collect this information only with your consent (given when you create your account and use the relevant features). We take additional precautions:</p>
+            <ul class="tos-ul">
+              <li>Sensitive data is encrypted in transit (TLS 1.2+) and at rest (AES-256 at the storage layer)</li>
+              <li>Journal entry content is excluded from the persistent local cache on your device</li>
+              <li>No administrative or support access path exists to read your journal text — this restriction is enforced at the database level, not just by policy</li>
+              <li>Sensitive data is excluded from aggregate analytics exports</li>
+            </ul>
+          </section>
+
+          <!-- 7 -->
+          <section class="tos-section" id="s7" aria-labelledby="s7-heading">
+            <span class="tos-section-num">Section 07</span>
+            <h2 class="tos-h2" id="s7-heading">Overseas Disclosure</h2>
+            <p class="tos-p">Some of our service providers (listed in section&nbsp;5) are based in the United States. Your personal information may be stored on and processed by servers located in the United States and, in the case of Supabase, potentially Australia (AWS Asia Pacific — Sydney region).</p>
+            <p class="tos-p">Before disclosing your information to overseas recipients, we take reasonable steps to ensure those recipients are subject to a law, binding scheme, or contractual obligations that uphold privacy protections comparable to the APPs. However, we cannot guarantee that foreign laws will always offer equivalent protections to Australian law.</p>
+            <p class="tos-p">By using the App, you acknowledge that your information may be transferred to and stored in the United States.</p>
+          </section>
+
+          <!-- 8 -->
+          <section class="tos-section" id="s8" aria-labelledby="s8-heading">
+            <span class="tos-section-num">Section 08</span>
+            <h2 class="tos-h2" id="s8-heading">How We Store and Protect Your Information</h2>
+            <ul class="tos-ul">
+              <li>All data is transmitted over encrypted connections (HTTPS / TLS)</li>
+              <li>Data at rest is encrypted using AES-256 at the storage layer (Supabase)</li>
+              <li>Photos you upload are stored in a private, access-controlled storage bucket; they are only accessible via short-lived signed URLs that expire after a defined period</li>
+              <li>Push notification tokens are automatically deleted if your device has not been active for 60 days</li>
+              <li>We use multi-factor authentication for all administrative access to our systems</li>
+            </ul>
+            <div class="tos-callout">
+              <p>No method of transmission or storage is 100% secure. If we become aware of a data breach that is likely to result in serious harm, we will notify the Office of the Australian Information Commissioner (OAIC) and affected individuals as required by the Notifiable Data Breaches scheme under the <em>Privacy Act 1988</em>.</p>
+            </div>
+          </section>
+
+          <!-- 9 -->
+          <section class="tos-section" id="s9" aria-labelledby="s9-heading">
+            <span class="tos-section-num">Section 09</span>
+            <h2 class="tos-h2" id="s9-heading">Data Retention</h2>
+            <p class="tos-p">We retain your personal information for as long as your account is active, or as long as necessary to provide the App's services.</p>
+            <p class="tos-p">If you delete your account:</p>
+            <ul class="tos-ul">
+              <li>Your profile, mood check-ins, journal entries, tool completions, lunar ritual entries, and uploaded photos are permanently deleted from our systems within <strong>14 days</strong> of your deletion request</li>
+              <li>A record containing a cryptographic hash of your email address (not the address itself) is retained in a secure audit log for a period of <strong>7 years</strong> to comply with our legal obligations and to prevent re-registration abuse</li>
+              <li>Aggregate, de-identified analytics data that has already been incorporated into reports may be retained</li>
+            </ul>
+          </section>
+
+          <!-- 10 -->
+          <section class="tos-section" id="s10" aria-labelledby="s10-heading">
+            <span class="tos-section-num">Section 10</span>
+            <h2 class="tos-h2" id="s10-heading">Your Rights</h2>
+            <p class="tos-p">Under the <em>Privacy Act 1988</em> and the Australian Privacy Principles, you have the right to:</p>
+            <div class="tos-rights-block">
+              <div class="tos-right">
+                <div class="tos-right-title">Access your information</div>
+                <p>You can export a copy of all your personal data — profile, mood history, journal entries, tool completions, lunar ritual entries, and a manifest of uploaded photos — at any time from <strong>Settings - Data export</strong> within the App. We will deliver a download link to your registered email address.</p>
+              </div>
+              <div class="tos-right">
+                <div class="tos-right-title">Correct your information</div>
+                <p>If your personal information is inaccurate, outdated, or incomplete, you can update it from <strong>Settings - Edit profile</strong>. If you believe other information we hold is incorrect, contact us at <a href="mailto:admin@healingsoul.com.au" style="color:var(--forest);text-decoration:underline;text-underline-offset:3px;">admin@healingsoul.com.au</a>.</p>
+              </div>
+              <div class="tos-right">
+                <div class="tos-right-title">Delete your account</div>
+                <p>You can permanently delete your account and all associated data from <strong>Settings - Account deletion</strong> within the App. This cannot be undone.</p>
+              </div>
+              <div class="tos-right">
+                <div class="tos-right-title">Withdraw consent for analytics</div>
+                <p>You can opt out of product analytics at any time from <strong>Settings - Privacy - Analytics</strong>. Crash reporting cannot be disabled as it is necessary for app stability.</p>
+              </div>
+              <div class="tos-right">
+                <div class="tos-right-title">Withdraw consent for push notifications</div>
+                <p>You can manage notification preferences at <strong>Settings - Notifications</strong>, or through your device's system settings.</p>
+              </div>
+            </div>
+            <p class="tos-p" style="margin-top:20px;">To exercise any right not directly available in the App, email <a href="mailto:admin@healingsoul.com.au">admin@healingsoul.com.au</a>. We will respond within 30 days.</p>
+          </section>
+
+          <!-- 11 -->
+          <section class="tos-section" id="s11" aria-labelledby="s11-heading">
+            <span class="tos-section-num">Section 11</span>
+            <h2 class="tos-h2" id="s11-heading">Children's Privacy</h2>
+            <p class="tos-p">The App is intended for adults aged 18 and over. We do not knowingly collect personal information from anyone under 18. If you believe a person under 18 has provided us with personal information, please contact us immediately at <a href="mailto:admin@healingsoul.com.au">admin@healingsoul.com.au</a> and we will delete it.</p>
+          </section>
+
+          <!-- 12 -->
+          <section class="tos-section" id="s12" aria-labelledby="s12-heading">
+            <span class="tos-section-num">Section 12</span>
+            <h2 class="tos-h2" id="s12-heading">Not Medical Advice</h2>
+            <div class="tos-callout tos-callout-danger">
+              <p>Healing Soul is a wellness and self-reflection tool. Nothing in the App — including mood tracking results, healing tool content, journaling prompts, or lunar ritual guidance — constitutes medical advice, psychological diagnosis, or treatment. If you are experiencing a mental health crisis, please contact a qualified health professional or emergency services.</p>
+            </div>
+          </section>
+
+          <!-- 13 -->
+          <section class="tos-section" id="s13" aria-labelledby="s13-heading">
+            <span class="tos-section-num">Section 13</span>
+            <h2 class="tos-h2" id="s13-heading">Links and Third-Party Content</h2>
+            <p class="tos-p">The App may contain links to third-party websites or services. This Privacy Policy does not apply to those third parties. We encourage you to review their privacy policies before providing any personal information.</p>
+          </section>
+
+          <!-- 14 -->
+          <section class="tos-section" id="s14" aria-labelledby="s14-heading">
+            <span class="tos-section-num">Section 14</span>
+            <h2 class="tos-h2" id="s14-heading">Changes to This Privacy Policy</h2>
+            <p class="tos-p">We may update this policy from time to time. When we do, we will:</p>
+            <ul class="tos-ul">
+              <li>Update the "Last updated" date at the top of this page</li>
+              <li>Increment the version number</li>
+              <li>Display an in-app notification asking you to review and accept the new version before continuing to use the App</li>
+            </ul>
+            <p class="tos-p">Continued use of the App after accepting an updated policy constitutes your consent to the changes.</p>
+          </section>
+
+          <!-- 15 -->
+          <section class="tos-section" id="s15" aria-labelledby="s15-heading">
+            <span class="tos-section-num">Section 15</span>
+            <h2 class="tos-h2" id="s15-heading">Complaints</h2>
+            <p class="tos-p">If you have a complaint about how we have handled your personal information, please contact us first at <a href="mailto:admin@healingsoul.com.au">admin@healingsoul.com.au</a>. We will investigate and respond within 30 days.</p>
+            <p class="tos-p">If you are not satisfied with our response, you may lodge a complaint with the <strong>Office of the Australian Information Commissioner (OAIC)</strong>:</p>
+            <div class="tos-contact-box">
+              <p>Website: <a href="https://www.oaic.gov.au" target="_blank" rel="noopener noreferrer">www.oaic.gov.au</a></p>
+              <p>Phone: 1300 363 992</p>
+              <p>Post: GPO Box 5218, Sydney NSW 2001</p>
+            </div>
+          </section>
+
+          <!-- 16 -->
+          <section class="tos-section" id="s16" aria-labelledby="s16-heading">
+            <span class="tos-section-num">Section 16</span>
+            <h2 class="tos-h2" id="s16-heading">Contact Us</h2>
+            <div class="tos-contact-box">
+              <p><strong>Healing Soul Pty Ltd</strong></p>
+              <p>ABN: 79&nbsp;511&nbsp;598&nbsp;831</p>
+              <p>239/21 Arches Crescent, Alderley, 4051, QLD</p>
+              <p>Email: <a href="mailto:admin@healingsoul.com.au">admin@healingsoul.com.au</a></p>
+            </div>
+          </section>
+
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer">
+    <div class="wrap">
+      <div class="foot-inner">
+        <div class="foot-logo">
+          <img src="logo-real-light.png" alt="Healing Soul icon">
+          <span class="foot-name">Healing Soul</span>
+        </div>
+        <span class="foot-tag">Heal Deep. Live Whole.</span>
+        <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:flex-end;">
+          <a href="termsandconditions.html" style="font-size:11px;letter-spacing:.08em;color:rgba(200,230,201,.28);transition:color .2s;" onmouseover="this.style.color='rgba(200,230,201,.65)'" onmouseout="this.style.color='rgba(200,230,201,.28)'">Terms &amp; Conditions</a>
+          <a href="privacy.html" style="font-size:11px;letter-spacing:.08em;color:rgba(200,230,201,.28);transition:color .2s;" onmouseover="this.style.color='rgba(200,230,201,.65)'" onmouseout="this.style.color='rgba(200,230,201,.28)'">Privacy Policy</a>
+          <span class="foot-copy">&copy; 2026 Healing Soul. All rights reserved.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function() {
+    'use strict';
+
+    var dot  = document.getElementById('cur-dot');
+    var ring = document.getElementById('cur-ring');
+
+    if (window.matchMedia('(hover: hover)').matches) {
+      var rx = 0, ry = 0, mx = 0, my = 0;
+      document.addEventListener('mousemove', function(e) {
+        mx = e.clientX; my = e.clientY;
+        dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+      });
+      (function raf() {
+        rx += (mx - rx) * 0.13; ry += (my - ry) * 0.13;
+        ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+        requestAnimationFrame(raf);
+      })();
+      document.querySelectorAll('a, button, [role="button"]').forEach(function(el) {
+        el.addEventListener('mouseenter', function() { document.body.classList.add('cur-hover'); });
+        el.addEventListener('mouseleave', function() { document.body.classList.remove('cur-hover'); });
+      });
+    }
+
+    var ham = document.getElementById('ham');
+    var mob = document.getElementById('mob');
+
+    function openMenu(open) {
+      ham.classList.toggle('open', open);
+      ham.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) {
+        mob.style.display = 'flex';
+        requestAnimationFrame(function() { mob.classList.add('open'); });
+        document.body.style.overflow = 'hidden';
+      } else {
+        mob.classList.remove('open');
+        document.body.style.overflow = '';
+        setTimeout(function() { mob.style.display = 'none'; }, 310);
+      }
+    }
+
+    ham.addEventListener('click', function() { openMenu(!ham.classList.contains('open')); });
+    ham.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') openMenu(!ham.classList.contains('open'));
+    });
+    mob.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() { openMenu(false); });
+    });
+
+    var sections = document.querySelectorAll('.tos-section[id]');
+    var tocLinks = document.querySelectorAll('.toc-list a');
+    if (tocLinks.length) {
+      window.addEventListener('scroll', function() {
+        var scrollY = window.scrollY + 160;
+        var active = null;
+        sections.forEach(function(s) { if (s.offsetTop <= scrollY) active = s.id; });
+        tocLinks.forEach(function(a) {
+          var href = a.getAttribute('href').replace('#', '');
+          a.style.color = href === active ? 'var(--forest)' : '';
+          a.style.borderLeftColor = href === active ? 'var(--terracotta)' : '';
+        });
+      }, { passive: true });
+    }
+
+  })();
+  </script>
+
+</body>
+</html>
